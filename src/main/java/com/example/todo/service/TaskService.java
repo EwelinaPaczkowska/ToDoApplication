@@ -2,7 +2,6 @@ package com.example.todo.service;
 
 import com.example.todo.model.Task;
 import com.example.todo.repository.TaskRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -30,4 +29,15 @@ public class TaskService {
     public void deleteAllTasks(){
         taskRepository.deleteAll();
     }
+
+    public Task updateTask(Long id, Task updatedtask){
+        Task task = taskRepository.findById(id).
+                orElseThrow(()-> new NoSuchElementException("Task not found"));
+
+        task.setTitle(updatedtask.getTitle());
+        task.setCompleted(updatedtask.isCompleted());
+        return taskRepository.save(task);
+    }
+
+    //public Task findTaskById(Long id){}
 }
