@@ -3,9 +3,7 @@ package com.example.todo.controller;
 import com.example.todo.model.Task;
 import com.example.todo.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -21,5 +19,10 @@ public class TaskController {
     @GetMapping
     public List<Task> getAllTasks() {
         return taskService.findAllTasks();
+    }
+
+    @PostMapping
+    public Task saveTask(@RequestBody Task task) {
+        return taskService.saveTask(task);
     }
 }
