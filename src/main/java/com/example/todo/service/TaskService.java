@@ -9,7 +9,6 @@ import java.util.*;
 
 @Service
 public class TaskService {
-    @Autowired
     private final TaskRepository taskRepository;
 
     public TaskService(TaskRepository taskRepository) {
